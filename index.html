@@ -6,14 +6,45 @@
 		// TODO: create a handler
     window.addEventListener("load", function(){
         // TODO: register the handler
+	
+	let form = document.getElementById("searchForm");	
+
+	function setSearchEngine() {
+		let actions = {
+			"google": "https://www.google.com/search",
+			"duckDuckGo": "https://duckduckgo.com/",
+			"bing": "https://www.bing.com/search",
+			"ask": "https://www.ask.com/web"
+		};
+
+		let form = document.getElementById("searchForm");
+		let result = document.querySelector("[name=engine]:checked");
+		let searchValue = actions[result.value];
+		form.setAttribute("action",searchValue);
+	}
+
+
+	// let button = document.getElementById("button");
+	// button.addEventListener("click",setSearchEngine);	
+	document.getElementById("button").onclick = setSearchEngine;
+	
+
     });
+
 	</script>
 </head>
 
 <body>
 
 	<form id="searchForm">
-    <!-- TODO: add form elements -->
+	<!-- TODO: add form elements -->
+	<input type="text" name="q"/>
+	Search Engine:
+	<label><input type="radio" name="engine" value="google"/>Google</label>
+   	<label><input type="radio" name="engine" value="duckDuckGo"/>DuckDuckGo</label>
+	<label><input type="radio" name="engine" value="bing"/>Bing</label>
+	<label><input type="radio" name="engine" value="ask"/>Ask</label>
+	<button id="button">Go!</button>
 	</form>
 
 </body>
